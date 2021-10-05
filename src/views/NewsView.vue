@@ -1,56 +1,18 @@
 <template>
   <div>
-    <ul class="news-list">
-      <li v-for="item in this.getNewsList" class="post">
-
-        <!-- 포인트 영역 -->
-        <div class="points">
-          {{ item.points }}
-        </div>
-
-        <!-- 기타 정보 영역 -->
-        <div>
-          <p class="news-title">
-            <a :href="item.url">
-              {{ item.title }}
-            </a>
-          </p>
-          <small class="link-text">
-            {{ item.time_ago }} by
-            <router-link :to="`/user/${item.user}`" class="link-text">{{ item.user }}</router-link>
-          </small>
-        </div>
-
-      </li>
-    </ul>
-
-
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
-
-
-import {mapActions, mapGetters} from "vuex";
+import ListItem from "@/components/ListItem";
 
 export default {
-
-  created() {
-    this.FETCH_NEWS();
-  },
-  computed: {
-    ...mapGetters([
-      'getNewsList'
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'FETCH_NEWS'
-    ])
+  components: {
+    ListItem,
   }
 }
 </script>
-
 <style scoped>
 .news-list {
   margin: 0;
