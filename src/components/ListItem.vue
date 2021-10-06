@@ -32,7 +32,7 @@
                 v-if="item.user"
                 :to="`/user/${item.user}`" class="link-text">{{ item.user }}
             </router-link>
-            <a :href="item.url" v-else>
+            <a :href="item.url" v-else class="link-text">
               {{ item.domain }}
             </a>
           </small>
@@ -48,20 +48,6 @@ import {mapActions} from "vuex";
 
 export default {
 
-  created() {
-    const name = this.$route.name;
-    switch (name) {
-      case 'news':
-        this.FETCH_NEWS();
-        break;
-      case 'ask':
-        this.FETCH_ASK();
-        break;
-      case 'jobs':
-        this.FETCH_JOBS();
-        break;
-    }
-  },
   computed: {
     listItems() {
       switch (this.$route.name) {

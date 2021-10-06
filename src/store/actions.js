@@ -13,8 +13,9 @@ export default {
 
     FETCH_JOBS({commit}) {
         fetchJobsList()
-            .then(({data}) => {
-                commit('SET_JOBS', data);
+            .then(response => {
+                commit('SET_JOBS', response.data);
+                return response;
             })
             .catch(error => {
                 console.log(error);

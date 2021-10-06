@@ -1,16 +1,23 @@
 <template>
   <div>
-    <p>name : {{ this.getUserInfo.id }}</p>
-    <p>karma : {{ this.getUserInfo.karma }}</p>
-    <p>created : {{ this.getUserInfo.created }}</p>
+    <user-profile :info="this.getUserInfo">
+      <div slot="username">{{ this.getUserInfo.id }}</div>
+      <span slot="time">{{ 'Joined ' + this.getUserInfo.created }}, </span>
+      <span slot="karma">{{ this.getUserInfo.karma }}</span>
+    </user-profile>
   </div>
 </template>
 
 <script>
 
 import {mapActions, mapGetters, mapMutations} from "vuex";
+import UserProfile from "@/components/UserProfile";
+
 
 export default {
+  components: {
+    UserProfile,
+  },
   computed: {
     ...mapGetters([
       'getUserInfo'

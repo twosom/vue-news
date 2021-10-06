@@ -5,21 +5,29 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapActions} from "vuex";
 import ListItem from "@/components/ListItem";
+import bus from "@/utils/bus";
 
 export default {
   components: {
     ListItem
   },
   created() {
-    this.FETCH_JOBS();
+    bus.$emit('start:spinner');
+    setTimeout(() => {
+      this.FETCH_JOBS()
+          .then(() => {
+            console.log('fetched');
+            bus.$emit('end:spinner');
+          })
+          .catch(error => {
+            console.log(error);
+          });
+    }, 3000);
+
   },
-  computed: {
-    ...mapGetters([
-      'getJobsList'
-    ])
-  },
+
   methods: {
     ...mapActions([
       'FETCH_JOBS'
