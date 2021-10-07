@@ -1,10 +1,8 @@
 import VueRouter from "vue-router";
 import Vue from "vue";
-import NewsView from "@/views/NewsView";
-import AskView from "@/views/AskView";
-import JobsView from "@/views/JobsView";
 import UserView from "@/views/UserView";
 import ItemView from "@/views/ItemView";
+import createListVue from '@/views/CreateListVue';
 
 
 Vue.use(VueRouter);
@@ -21,18 +19,17 @@ export const router = new VueRouter({
             // path: url 주소
             path: '/news',
             name: 'news',
-            // component: url 주소로 갔을 때 표시될 컴포넌트
-            component: NewsView,
+            component: createListVue('NewsView')
         },
         {
             path: '/ask',
             name: 'ask',
-            component: AskView,
+            component: createListVue('AskView')
         },
         {
             path: '/jobs',
             name: 'jobs',
-            component: JobsView,
+            component: createListVue('JobsView')
         },
         {
             path: '/user/:id',

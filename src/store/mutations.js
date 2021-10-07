@@ -19,8 +19,15 @@ export default {
         state.item = item;
     },
 
-
     CLEAR_USER(state) {
         state.user = {};
     },
+
+    SET_LIST(state, list) {
+        state.list = list;
+    },
+
+    CLEAR_LIST(state) {
+        state.list = [];
+    }
 }
