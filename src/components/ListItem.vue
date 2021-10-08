@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="news-list">
-      <li v-for="item in getList" class="post">
+      <li v-for="(item, idx) in this.getList" :key="idx" class="post">
 
         <!-- 포인트 영역 -->
         <div class="points">
