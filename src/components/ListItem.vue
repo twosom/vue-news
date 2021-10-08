@@ -50,7 +50,7 @@ export default {
 
   computed: {
     ...mapGetters([
-        'getList'
+      'getList'
     ])
   },
   methods: {
