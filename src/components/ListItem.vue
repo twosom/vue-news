@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="news-list">
-      <li v-for="item in listItems" class="post">
+      <li v-for="item in this.getList" class="post">
 
         <!-- 포인트 영역 -->
         <div class="points">
@@ -44,21 +44,14 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 
 export default {
 
   computed: {
-    listItems() {
-      switch (this.$route.name) {
-        case 'news':
-          return this.$store.state.news
-        case 'ask':
-          return this.$store.state.ask
-        case 'jobs':
-          return this.$store.state.jobs
-      }
-    }
+    ...mapGetters([
+        'getList'
+    ])
   },
   methods: {
     ...mapActions([
