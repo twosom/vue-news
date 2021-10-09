@@ -2,7 +2,7 @@ import {fetchAskList, fetchCommentItem, fetchJobsList, fetchListItem, fetchNewsL
 
 export default {
     FETCH_NEWS({commit}) {
-        fetchNewsList()
+        return fetchNewsList()
             .then(({data}) => {
                 commit('SET_NEWS', data);
             })
@@ -12,7 +12,7 @@ export default {
     },
 
     FETCH_JOBS({commit}) {
-        fetchJobsList()
+        return fetchJobsList()
             .then(response => {
                 commit('SET_JOBS', response.data);
                 return response;
@@ -23,7 +23,7 @@ export default {
     },
 
     FETCH_ASK({commit}) {
-        fetchAskList()
+        return fetchAskList()
             .then(({data}) => {
                 commit('SET_ASK', data);
             })
@@ -33,7 +33,7 @@ export default {
     },
 
     FETCH_USER({commit}, username) {
-        fetchUserInfo(username)
+        return fetchUserInfo(username)
             .then(({data}) => {
                 commit('SET_USER', data);
             })
@@ -43,7 +43,7 @@ export default {
     },
 
     FETCH_ITEM({commit}, itemId) {
-        fetchCommentItem(itemId)
+        return fetchCommentItem(itemId)
             .then(({data}) => {
                 commit('SET_ITEM', data);
             })
@@ -52,10 +52,12 @@ export default {
             })
     },
 
+    // #2
     FETCH_LIST({commit}, pageName) {
-        fetchListItem(pageName)
-            .then(({data}) => {
-                commit('SET_LIST', data);
+        return fetchListItem(pageName)
+            .then(response => {
+                commit('SET_LIST', response.data);
+                return response;
             })
             .catch(error => {
                 console.log(error);
