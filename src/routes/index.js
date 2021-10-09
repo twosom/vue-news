@@ -28,7 +28,7 @@ export const router = new VueRouter({
             // beforeEnter : 특정 url 로 접근할 때 인증정보가 있는지 없는지 확인할 때 가장 많이 쓰임
             beforeEnter: (to, from, next) => {
                 bus.$emit('start:spinner');
-                store.dispatch('FETCH_LIST', to.name)
+                store.dispatch('FETCH_NEWS', to.name)
                     .then(() => next())
                     .catch(error => {
                         console.log(error);
@@ -42,7 +42,7 @@ export const router = new VueRouter({
             // component: createListVue('AskView'),
             beforeEnter: (to, from, next) => {
                 bus.$emit('start:spinner');
-                store.dispatch('FETCH_LIST', to.name)
+                store.dispatch('FETCH_ASK', to.name)
                     .then(() => next())
                     .catch(error => {
                         console.log(error);
@@ -56,7 +56,7 @@ export const router = new VueRouter({
             // component: createListVue('JobsView'),
             beforeEnter: (to, from, next) => {
                 bus.$emit('start:spinner');
-                store.dispatch('FETCH_LIST', to.name)
+                store.dispatch('FETCH_JOBS', to.name)
                     .then(() => next())
                     .catch(error => {
                         console.log(error);
