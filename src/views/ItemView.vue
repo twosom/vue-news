@@ -26,7 +26,7 @@
 <script>
 
 
-import {mapActions, mapGetters} from "vuex";
+import {mapActions, mapGetters, mapMutations} from "vuex";
 import UserProfile from "@/components/UserProfile";
 
 export default {
@@ -46,7 +46,13 @@ export default {
   methods: {
     ...mapActions([
       'FETCH_ITEM'
+    ]),
+    ...mapMutations([
+      'CLEAR_ITEM'
     ])
+  },
+  destroyed() {
+    this.CLEAR_ITEM();
   }
 }
 </script>

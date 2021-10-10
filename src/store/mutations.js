@@ -29,6 +29,10 @@ export default {
 
     CLEAR_LIST(state) {
         state.list = [];
+    },
+
+    CLEAR_ITEM(state) {
+        state.item = {};
     }
 
 }

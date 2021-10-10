@@ -44,20 +44,13 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from "vuex";
+import {mapGetters} from "vuex";
 
 export default {
 
   computed: {
     ...mapGetters([
       'getList'
-    ])
-  },
-  methods: {
-    ...mapActions([
-      'FETCH_NEWS',
-      'FETCH_ASK',
-      'FETCH_JOBS'
     ])
   }
 }
